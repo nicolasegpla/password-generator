@@ -1,13 +1,12 @@
-import './index.css'
+import '../../index.css'
+import AppUi from '../AppUi'
 
 function App() {
   
 
   return (
     <>
-      <h1 className="text-3xl text-indigo-700 font-bold underline">
-        Hello world!
-      </h1>
+      <AppUi />
     </>
   )
 }
