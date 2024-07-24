@@ -4,7 +4,7 @@ import ButtonGenerator from './index';
 
 
 export default {
-    title: 'Components/ButtonGenerator',
+    title: 'Components/atoms/ButtonGenerator',
     component: ButtonGenerator,
     args: {
         fnGeneratorPassword: fn(),
