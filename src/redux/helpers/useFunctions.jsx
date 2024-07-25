@@ -11,6 +11,10 @@ function useFunctions() {
         dispatch(generateNewPassword());
         console.log('escucha')
     };
+
+
+    
+
     return {
         handleGeneratePassword
     }
