@@ -12,11 +12,17 @@ function useFunctions() {
         console.log('escucha')
     };
 
+    function copyPasswordfn(value) {
+        navigator.clipboard.writeText(value).then(() => {
+            console.log('Texto copiado al portapapeles');
+        });
+    }
 
     
 
     return {
-        handleGeneratePassword
+        handleGeneratePassword,
+        copyPasswordfn,
     }
 }
 
