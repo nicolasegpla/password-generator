@@ -8,6 +8,8 @@ function GlobalProvider({children}) {
 
     const [ valueInputNewPassword, setValueInputNewPassword ] = useState('')
     const [ savePassword, setSavePassword ] = useState(false)
+    const [ nameValidator, setNameValidator ] = useState(false)
+    const [ passwordValidator, setPasswordValidator ] = useState(false)
     
     return (
         <GlobalState.Provider value={{
@@ -15,6 +17,10 @@ function GlobalProvider({children}) {
             valueInputNewPassword,
             savePassword,
             setSavePassword,
+            setNameValidator,
+            nameValidator,
+            setPasswordValidator,
+            passwordValidator,
 
         }}>
             {children}

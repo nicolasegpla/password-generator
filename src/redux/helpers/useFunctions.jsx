@@ -5,13 +5,14 @@ import { useSelector } from "react-redux";
 import { upDatePassword } from "../createPassword"
 import { useContext } from "react";
 import { GlobalState } from "../../context/global/GlobalState";
+import { useEffect } from "react";
 
 
 function useFunctions() {
 
     const dispatch = useDispatch()
 
-    const { setSavePassword } = useContext(GlobalState)
+    const { setSavePassword, setNameValidator, nameValidator, setPasswordValidator } = useContext(GlobalState)
 
     const { value } = useSelector((state) => state.newPassword)
     
@@ -22,13 +23,26 @@ function useFunctions() {
     } 
 
     const handleGeneratePassword = () => {
+        setPasswordValidator(false)
         dispatch(generateNewPassword());
     };
 
+    useEffect(() => {
+        dispatch(getDataInput({newPassword: value, namePassword: data.namePassword}))
+    })
+    
+
     function copyPasswordfn(value) {
-        navigator.clipboard.writeText(value).then(() => {
-            console.log('Texto copiado al portapapeles');
-        });
+
+        if(data.newPassword == '') {
+            setPasswordValidator(true)
+        }else {
+            navigator.clipboard.writeText(value).then(() => {
+                console.log('Texto copiado al portapapeles');
+            });
+            setPasswordValidator(false)
+        }
+        
     }
     
     function savePasswordfn(set, value) {
@@ -40,6 +54,7 @@ function useFunctions() {
     function getNamePassword({target}) {
         const namePass = target.value;
         dispatch(getDataInput({newPassword: data.newPassword, namePassword: namePass}))
+        setNameValidator(false)
     }
 
     function upDatePasswordfn({target}) {
@@ -48,8 +63,27 @@ function useFunctions() {
     }
 
     function saveData() {
-        setSavePassword(true)
-        dispatch(getDataInput({newPassword: value, namePassword: data.namePassword}))
+        if(data.newPassword == '') {
+            setPasswordValidator(true)
+            console.log(data.newPassword)
+        }else {
+            setSavePassword(true)
+        }
+    }
+
+    console.log(data.newPassword)
+
+    function nameValidatorfn() {
+        if(data.namePassword == '') {
+            setNameValidator(true)
+            console.log(nameValidator)
+        }else {
+            setNameValidator(false)
+            dispatch(upDatePassword(''))
+            dispatch(getDataInput({namePassword: ''}))
+            setSavePassword(false)
+            console.log(nameValidator)
+        }
     }
     
     console.log(data)
@@ -61,6 +95,7 @@ function useFunctions() {
         getNamePassword,
         upDatePasswordfn,
         saveData,
+        nameValidatorfn,
     }
 }
 

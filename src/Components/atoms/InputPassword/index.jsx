@@ -16,6 +16,7 @@ function InputPassword({size, placeholderLabel, value, inputFn, type, readOnly})
     return(
         <>
             <input type={type} readOnly={readOnly} onChange={inputFn} ref={refInput} placeholder={placeholderLabel} defaultValue={value} className={`myshadow ${size} font-medium bg-stone-800 type="text rounded-xl px-3 relative border-none text-white`} />
+            
         </>
     )
 }
