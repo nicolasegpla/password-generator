@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-function ButtonSave({size}) {
+function ButtonSave({size, buttonFn, label, bgColor}) {
+
     return (
         <>
-            <button className={`bg-fuchsia-500 ${size} rounded-xl border-none font-medium text-white`}>Save Password</button>
+            <button type="button" onClick={buttonFn} className={`${bgColor} ${size} rounded-xl border-none font-medium text-white`}>{label}</button>
         </>
     )
 }

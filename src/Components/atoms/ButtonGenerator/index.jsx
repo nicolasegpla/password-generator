@@ -1,7 +1,6 @@
+/* eslint-disable react/prop-types */
 import { BoltIcon } from "@heroicons/react/24/outline"
 
-
-/* eslint-disable react/prop-types */
 function ButtonGenerator({label, fnGeneratorPassword}) {
 
     return(

@@ -3,16 +3,12 @@ import ButtonGenerator from "../../Components/atoms/ButtonGenerator"
 import Layout from "../../Layout/Layout"
 import '../../App.css'
 import FormNewPassword from "../../Components/molecules/FormNewPassword";
-//import color from '../../assets/color.png'
 
 
 function AppUi() {
 
     const { handleGeneratePassword } = useFunctions();
-
     
-    
-
     return(
         <>
             <Layout>

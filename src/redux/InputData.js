@@ -15,3 +15,6 @@ export const dataInputNewSlice = createSlice({
         }
     }
 })
+
+export const { getDataInput } = dataInputNewSlice.actions
+export default dataInputNewSlice.reducer;

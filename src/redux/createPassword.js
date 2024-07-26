@@ -20,9 +20,13 @@ export const createPasswordSlice = createSlice({
     reducers: {
         generateNewPassword: (state) => {
             state.value = generatePassword(state.length)
+        },
+        upDatePassword: (state, action) => {
+            state.value = action.payload
         }
+        
     }
 })
 
-export const { generateNewPassword } = createPasswordSlice.actions
+export const { generateNewPassword, upDatePassword} = createPasswordSlice.actions
 export default createPasswordSlice.reducer;

@@ -7,14 +7,14 @@ const GlobalState = createContext();
 function GlobalProvider({children}) {
 
     const [ valueInputNewPassword, setValueInputNewPassword ] = useState('')
-
-    console.log(valueInputNewPassword.current)
+    const [ savePassword, setSavePassword ] = useState(false)
     
-
     return (
         <GlobalState.Provider value={{
             setValueInputNewPassword,
             valueInputNewPassword,
+            savePassword,
+            setSavePassword,
 
         }}>
             {children}
