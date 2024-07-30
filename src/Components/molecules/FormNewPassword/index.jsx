@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { useFunctions } from "../../../redux/helpers/useFunctions"
 import { GlobalState } from "../../../context/global/GlobalState"
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline"
+import { CheckBadgeIcon } from "@heroicons/react/24/outline"
 import InputPassword from "../../atoms/InputPassword"
 import ButtonCopy from "../../atoms/ButtonCopy"
 import ButtonSave from "../../atoms/ButtonSave"
@@ -11,7 +12,7 @@ import ButtonSave from "../../atoms/ButtonSave"
 
 function FormNewPassword({position}) {
 
-    const {valueInputNewPassword, savePassword, nameValidator, passwordValidator} = useContext(GlobalState)
+    const {valueInputNewPassword, savePassword, nameValidator, passwordValidator, savePasswordIsOk} = useContext(GlobalState)
     const {copyPasswordfn, getNamePassword, upDatePasswordfn, saveData, nameValidatorfn } = useFunctions()
 
     const {value} = useSelector((state) => state.newPassword)
@@ -36,12 +37,16 @@ function FormNewPassword({position}) {
                     {
                         passwordValidator ? <p className='w-full mt-2 text-left text-fuchsia-500 flex justify-start items-center gap-2'><ExclamationTriangleIcon className="size-5"/> Generate a password first</p> : null
                     }
+                    {
+                    savePasswordIsOk ? <p className='w-full text-left text-emerald-400 flex justify-start items-center gap-2 mt-2'><CheckBadgeIcon className="size-5"/> Password saved successfully</p> : null
+                    }
                     <ButtonCopy copyPassword={() => copyPasswordfn(valueInputNewPassword.current.value)} size={`w-10 h-10`} sizeIcon={`size-6`} position={`absolute inset-y-0 right-2 z-50`} colorIcon={`text-white`}/>
                     
                 </div>
                 {
-                    !savePassword ? <ButtonSave label={'Save Password'} buttonFn={saveData} size={`w-32 h-10 text-sm`} bgColor={'bg-indigo-600'} /> : <ButtonSave label={'Confirm'} buttonFn={nameValidatorfn} size={`w-32 h-10 text-sm`} bgColor={'bg-fuchsia-500'} />
+                    !savePassword ? <ButtonSave label={'Save Password'} buttonFn={saveData} size={`w-32 h-10 text-sm`} bgColor={'bg-indigo-600'} /> : <ButtonSave label={'Confirm'} buttonFn={nameValidatorfn} size={`w-32 h-10 text-sm`} bgColor={'bg-fuchsia-500'} type={'button'} />
                 }
+                
                 
 
             </form>

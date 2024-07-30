@@ -12,7 +12,7 @@ function useFunctions() {
 
     const dispatch = useDispatch()
 
-    const { setSavePassword, setNameValidator, nameValidator, setPasswordValidator } = useContext(GlobalState)
+    const { setSavePassword, setNameValidator, nameValidator, setPasswordValidator, setSavePasswordIsOk } = useContext(GlobalState)
 
     const { value } = useSelector((state) => state.newPassword)
     
@@ -78,6 +78,8 @@ function useFunctions() {
             setNameValidator(true)
             console.log(nameValidator)
         }else {
+            console.log('guardado perri')
+            setSavePasswordIsOk(true)
             setNameValidator(false)
             dispatch(upDatePassword(''))
             dispatch(getDataInput({namePassword: ''}))
@@ -85,6 +87,10 @@ function useFunctions() {
             console.log(nameValidator)
         }
     }
+
+    setTimeout(() => {
+        setSavePasswordIsOk(false)
+    }, '10000')
     
     console.log(data)
     return {
